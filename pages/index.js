@@ -1,14 +1,10 @@
-import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import Header from "../components/Header/Header";
+import Layout from "../components/Layout/Layout";
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Head>
-        <Header />
-      </Head>
+      <Layout />
 
       <main className={styles.main}></main>
 
