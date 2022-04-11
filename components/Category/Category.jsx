@@ -1,6 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import { potionList } from "../../utils/items/potionList";
 
 export default function Category() {
   return (
@@ -17,22 +18,24 @@ export default function Category() {
         </div>
         <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={`${
-                    active ? "bg-violet-500 text-white" : "text-gray-900"
-                  } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                >
-                  <img
-                    src="\images\strength-potion.png"
-                    className="mr-3 h-6 sm:h-9"
-                    alt="Strength Potion"
-                  ></img>
-                  Strength Potion
-                </button>
-              )}
-            </Menu.Item>
+            {potionList.map((potion) => (
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                  >
+                    <img
+                      src={potion.image}
+                      className="mr-3 h-6 sm:h-9"
+                      alt={potion.name}
+                    ></img>
+                    {potion.name}
+                  </button>
+                )}
+              </Menu.Item>
+            ))}
           </div>
         </Menu.Items>
       </Menu>
