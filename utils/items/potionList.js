@@ -1,21 +1,26 @@
-export const potionList = {
-  strength: {
+export const potionList = [
+  {
     name: "Strength Potion",
     image: "images/strength-potion.png",
   },
-  dexterity: {
+  {
     name: "Dexterity Potion",
+    image: "images/dexterity-potion.png",
   },
-  intelligence: {
+  {
     name: "Intelligence Potion",
+    image: "images/intelligence-potion.png",
   },
-  wisdom: {
+  {
     name: "Wisdom Potion",
+    image: "images/wisdom-potion.png",
   },
-  willpower: {
+  {
     name: "Willpower Potion",
+    image: "images/willpower-potion.png",
   },
-  constitution: {
+  {
     name: "Constitution Potion",
+    image: "images/strength-potion.png", // TODO: Add DP image
   },
-};
+];
