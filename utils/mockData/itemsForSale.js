@@ -1,9 +1,14 @@
-export const strengthPotion = {
-  "User 1": 20000,
-  "User 2": 25000,
-  "User 3": 10000,
-  "User 4": 150000,
-  "User 5": 11000,
-  "User 6": 22000,
-  "User 7": 30000,
-};
+export const strengthPotion = [
+  {
+    user: "User 1",
+    value: 20000,
+  },
+  {
+    user: "User 2",
+    value: 30000,
+  },
+  {
+    user: "User 3",
+    value: 40000,
+  },
+];
