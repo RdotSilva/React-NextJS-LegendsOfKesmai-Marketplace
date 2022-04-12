@@ -21,6 +21,10 @@ export const potionList = [
   },
   {
     name: "Constitution Potion",
-    image: "images/strength-potion.png", // TODO: Add DP image
+    image: "images/constitution-potion.png",
+  },
+  {
+    name: "Youth Potion",
+    image: "images/youth-potion.png",
   },
 ];
