@@ -1,5 +1,6 @@
 import { Menu } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import Link from "next/dist/client/link";
 
 export default function Category({ categoryName, categoryItems }) {
   return (
@@ -17,22 +18,26 @@ export default function Category({ categoryName, categoryItems }) {
         <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
             {categoryItems.map((categoryItem) => (
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
-                    } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
-                  >
-                    <img
-                      src={categoryItem.image}
-                      className="mr-3 h-6 sm:h-9"
-                      alt={categoryItem.name}
-                    ></img>
-                    {categoryItem.name}
-                  </button>
-                )}
-              </Menu.Item>
+              <Link href={`/buying/${categoryItem.slug}`}>
+                <a>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active ? "bg-violet-500 text-white" : "text-gray-900"
+                        } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
+                      >
+                        <img
+                          src={categoryItem.image}
+                          className="mr-3 h-6 sm:h-9"
+                          alt={categoryItem.name}
+                        ></img>
+                        {categoryItem.name}
+                      </button>
+                    )}
+                  </Menu.Item>
+                </a>
+              </Link>
             ))}
           </div>
         </Menu.Items>
