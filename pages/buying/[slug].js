@@ -9,6 +9,13 @@ const BuyingDetails = ({ potionData, forSale }) => {
       <Layout />
       <div>Buying Details Page</div>
       <p>{potionData.name}</p>
+      {forSale.map((item) => (
+        <div>
+          <p>
+            {item.user} selling for {item.value}
+          </p>
+        </div>
+      ))}
     </>
   );
 };
