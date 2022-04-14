@@ -1,8 +1,9 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
 import { potionList } from "../../utils/items/potionList";
+import { itemsForSale } from "../../utils/mockData/itemsForSale";
 
-const BuyingDetails = ({ potionData }) => {
+const BuyingDetails = ({ potionData, forSale }) => {
   return (
     <>
       <Layout />
@@ -39,11 +40,17 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
 
+  // TODO: Replace this with database call
   const data = potionList.find((potion) => {
     return potion.slug === slug;
   });
 
+  // TODO: Replace this with Database call to fetch items per slug
+  const items = itemsForSale.filter((item) => {
+    return item.slug === slug;
+  });
+
   return {
-    props: { potionData: data },
+    props: { potionData: data, forSale: items },
   };
 };
