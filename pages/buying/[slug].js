@@ -30,3 +30,20 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 };
+
+/**
+ * Search the potion mock data file and return all the necessary information about that potion and turn it into props
+ * @param {*} context
+ * @returns
+ */
+export const getStaticProps = async (context) => {
+  const slug = context.params.slug;
+
+  const data = potionList.find((potion) => {
+    return potion.slug === slug;
+  });
+
+  return {
+    props: { potionData: data },
+  };
+};
