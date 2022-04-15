@@ -5,7 +5,11 @@ import { potionList } from "../../utils/items/potionList";
 const Buy = () => {
   return (
     <div>
-      <Category categoryName="Potions" categoryItems={potionList} />
+      <Category
+        categoryName="Potions"
+        categoryItems={potionList}
+        tradeType="buying"
+      />
     </div>
   );
 };

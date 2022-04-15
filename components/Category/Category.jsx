@@ -2,7 +2,7 @@ import { Menu } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/dist/client/link";
 
-export default function Category({ categoryName, categoryItems }) {
+export default function Category({ categoryName, categoryItems, tradeType }) {
   return (
     <div className="w-56 text-right fixed top-16">
       <Menu as="div" className="relative inline-block text-left">
@@ -18,7 +18,7 @@ export default function Category({ categoryName, categoryItems }) {
         <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
             {categoryItems.map((categoryItem) => (
-              <Link href={`/buying/${categoryItem.slug}`}>
+              <Link href={`/${tradeType}/${categoryItem.slug}`}>
                 <a>
                   <Menu.Item>
                     {({ active }) => (
