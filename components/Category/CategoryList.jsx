@@ -50,7 +50,11 @@ const CategoryList = () => {
                     className="relative p-3 rounded-md hover:bg-coolGray-100"
                   >
                     <h3 className="text-sm font-medium leading-5">
-                      {item.name}
+                      <img
+                        src={item.image}
+                        className="mr-3 h-6 sm:h-9"
+                        alt={item.name}
+                      ></img>
                     </h3>
 
                     <ul className="flex mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
