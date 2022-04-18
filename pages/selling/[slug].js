@@ -7,15 +7,28 @@ const SellingDetails = ({ potionData, forSale }) => {
   return (
     <>
       <Layout />
-      <div>Buying Details Page</div>
+      <div>For Sale</div>
       <p>{potionData.name}</p>
-      {forSale.map((item) => (
-        <div>
-          <p>
-            {item.user} selling for {item.value}
-          </p>
-        </div>
-      ))}
+      <div>
+        <table class="table-auto">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Price</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {forSale.map((item) => (
+              <tr>
+                <td>{item.user}</td>
+                <td>{item.value}</td>
+                <td>Today</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
