@@ -21,3 +21,20 @@ const SellingDetails = ({ potionData, forSale }) => {
 };
 
 export default SellingDetails;
+
+/**
+ * Find all slugs and generate static page for each item based on the slug
+ * @returns All of the slugs located inside of potion list
+ */
+export const getStaticPaths = async () => {
+  const paths = potionList.map((potion) => {
+    return {
+      params: { slug: potion.slug },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
