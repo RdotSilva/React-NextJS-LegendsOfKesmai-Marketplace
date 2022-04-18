@@ -51,3 +51,26 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 };
+
+/**
+ * Search the potion mock data file and return all the necessary information about that potion and turn it into props
+ * @param {*} context
+ * @returns
+ */
+export const getStaticProps = async (context) => {
+  const slug = context.params.slug;
+
+  // TODO: Replace this with database call
+  const data = potionList.find((potion) => {
+    return potion.slug === slug;
+  });
+
+  // TODO: Replace this with Database call to fetch items per slug
+  const items = itemsForSale.filter((item) => {
+    return item.slug === slug;
+  });
+
+  return {
+    props: { potionData: data, forSale: items },
+  };
+};
