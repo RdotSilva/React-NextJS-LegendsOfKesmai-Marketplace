@@ -1,5 +1,6 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
+import Table from "../../components/Table/Table";
 import { potionList } from "../../utils/items/potionList";
 import { itemsForSale } from "../../utils/mockData/itemsForSale";
 
@@ -10,24 +11,7 @@ const SellingDetails = ({ potionData, forSale }) => {
       <div>For Sale</div>
       <p>{potionData.name}</p>
       <div>
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th>User</th>
-              <th>Price</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {forSale.map((item) => (
-              <tr>
-                <td>{item.user}</td>
-                <td>{item.value}</td>
-                <td>Today</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table items={itemsForSale} />
       </div>
     </>
   );
