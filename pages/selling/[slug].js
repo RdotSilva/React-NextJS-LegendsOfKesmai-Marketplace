@@ -9,7 +9,7 @@ const SellingDetails = ({ potionData, forSale }) => {
     <>
       <Layout />
       <div>
-        <Table items={itemsForSale} itemName={potionData.name} />
+        <Table items={forSale} itemName={potionData.name} />
       </div>
     </>
   );
