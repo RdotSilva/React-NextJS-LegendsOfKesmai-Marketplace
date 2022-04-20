@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 
 const Table = ({ items, itemName }) => {
@@ -47,3 +48,8 @@ const Table = ({ items, itemName }) => {
 };
 
 export default Table;
+
+Table.propTypes = {
+  items: PropTypes.array,
+  itemName: PropTypes.string,
+};
