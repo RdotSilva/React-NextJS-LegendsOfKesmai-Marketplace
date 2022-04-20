@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const Table = ({ items }) => {
   return (
@@ -28,7 +29,9 @@ const Table = ({ items }) => {
                   {item.user}
                 </th>
                 <td className="px-6 py-4">{item.value}</td>
-                <td className="px-6 py-4">{item.date}</td>
+                <td className="px-6 py-4">
+                  {moment(item.date).format("MMMM Do YYYY, h:mm a")}
+                </td>
               </tr>
             ))}
           </tbody>
