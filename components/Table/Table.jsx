@@ -32,7 +32,7 @@ const Table = ({ items, itemName }) => {
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
                 >
-                  {item.user}
+                  <a href="https://discordapp.com/users/TODO">{item.user}</a>
                 </th>
                 <td className="px-6 py-4">{item.value}</td>
                 <td className="px-6 py-4">
