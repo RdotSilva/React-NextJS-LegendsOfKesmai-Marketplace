@@ -20,6 +20,6 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAnalytics = getAnalytics(app);
 
-const db = getDatabase(firebaseApp);
+export const db = getDatabase(firebaseApp);
 
 // TODO: Read from DB and test
