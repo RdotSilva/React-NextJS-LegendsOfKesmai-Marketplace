@@ -1,25 +1,43 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getDatabase, ref, set } from "firebase/database";
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, setDoc } from "firebase/firestore";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import { secret } from "../../secret.js";
+
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID,
-  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
+  apiKey: secret.apiKey,
+  authDomain: secret.authDomain,
+  projectId: secret.projectId,
+  storageBucket: secret.storageBucket,
+  messagingSenderId: secret.messagingSenderId,
+  appId: secret.appId,
+  measurementId: secret.measurementId,
 };
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const firebaseAnalytics = getAnalytics(app);
 
-export const db = getDatabase(firebaseApp);
+const db = getFirestore(firebaseApp);
 
-// TODO: Read from DB and test
+const dbInstance = collection(db, "potions");
+
+// Create the doc ref used for setting a document and a custom ID
+const docRef = doc(db, "potions", "00225");
+
+// Potion payload for testing
+const potion = {
+  name: "Strength Potion",
+  image: "images/item-00225.png",
+  slug: "strengthpotion",
+  id: "00225",
+};
+
+// Set the payload in the db with custom ID
+const savePotions = () => {
+  setDoc(docRef, {
+    potion,
+  });
+};
+
+savePotions();
