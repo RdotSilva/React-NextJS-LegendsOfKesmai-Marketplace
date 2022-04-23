@@ -7,7 +7,7 @@ export const potionList = [
   },
   {
     name: "Dexterity Potion",
-    image: "images/item-00222.pngg",
+    image: "images/item-00222.png",
     slug: "dexteritypotion",
     id: "00222",
   },
