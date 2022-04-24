@@ -8,9 +8,7 @@ import { potionList } from "../items/potionList.js";
  * @param {String} item The item to save to the database
  */
 const saveItemToDb = (docRef, item) => {
-  setDoc(docRef, {
-    item,
-  });
+  setDoc(docRef, item);
 };
 
 /**
