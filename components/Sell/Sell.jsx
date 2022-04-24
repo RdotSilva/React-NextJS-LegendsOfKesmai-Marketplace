@@ -1,16 +1,13 @@
 import React from "react";
-import Category from "../Category/Category";
 import CategoryList from "../Category/CategoryList";
-import { potionList } from "../../utils/items/potionList";
 
+/**
+ * This is the main component that is rendered on the /sell page
+ * It should show a row of clickable item categories and each category should have a dropdown for items
+ */
 const Sell = () => {
   return (
     <div>
-      {/* <Category
-        categoryName="Potions"
-        categoryItems={potionList}
-        tradeType="selling"
-      /> */}
       <CategoryList />
     </div>
   );
