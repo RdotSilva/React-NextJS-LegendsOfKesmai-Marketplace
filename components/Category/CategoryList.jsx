@@ -53,7 +53,7 @@ const CategoryList = () => {
                     >
                       <h3 className="text-sm font-medium leading-5">
                         <img
-                          src={item.image}
+                          src={`/images/${item.image}`}
                           className="mr-3 h-6 sm:h-9"
                           alt={item.name}
                         ></img>
