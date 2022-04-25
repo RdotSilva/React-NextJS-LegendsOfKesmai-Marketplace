@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Tab } from "@headlessui/react";
-import { potionList } from "../../utils/items/potionList";
 import Link from "next/link";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const CategoryList = () => {
+const CategoryList = ({ potionList }) => {
   let [categories] = useState({
     Potions: [...potionList],
     Armor: [],
