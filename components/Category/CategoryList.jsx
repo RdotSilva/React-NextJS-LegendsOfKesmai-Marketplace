@@ -43,34 +43,31 @@ const CategoryList = ({ potionList }) => {
                 "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60"
               )}
             >
-              <ul>
+              <ul className="grid grid-cols-4 gap-1 items-center">
                 {items.map((item) => (
-                  <Link href={`/selling/${item.slug}`}>
-                    <li
-                      key={item.slug}
-                      className="relative p-3 rounded-md hover:bg-coolGray-100"
-                    >
-                      <h3 className="text-sm font-medium leading-5">
-                        <img
-                          src={`/images/${item.image}`}
-                          className="mr-3 h-6 sm:h-9"
-                          alt={item.name}
-                        ></img>
-                      </h3>
+                  <li
+                    key={item.slug}
+                    className="relative rounded-md hover:bg-coolGray-100"
+                  >
+                    <img
+                      src={`/images/${item.image}`}
+                      className="mr-3 h-6 sm:h-9"
+                      alt={item.name}
+                    ></img>
 
-                      <ul className="flex mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
-                        <li>{item.name}</li>
-                      </ul>
+                    <ul className="mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
+                      <li>{item.name}</li>
+                    </ul>
 
-                      <a
-                        href="#"
-                        className={classNames(
-                          "absolute inset-0 rounded-md",
-                          "focus:z-10 focus:outline-none focus:ring-2 ring-blue-400"
-                        )}
-                      />
-                    </li>
-                  </Link>
+                    <a
+                      onClick={() => console.log(item)}
+                      href="#"
+                      className={classNames(
+                        "absolute inset-0 rounded-md",
+                        "focus:z-10 focus:outline-none focus:ring-2 ring-blue-400"
+                      )}
+                    />
+                  </li>
                 ))}
               </ul>
             </Tab.Panel>
