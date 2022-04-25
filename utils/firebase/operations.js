@@ -14,3 +14,12 @@ export const fetchDocuments = async (collectionRef) => {
 
   return data;
 };
+
+/**
+ * Add a document to the database
+ * @param {*} collectionRef The collection reference to add data to
+ * @param {*} item The item to add to the collection
+ */
+export const addDocument = async (collectionRef, item) => {
+  saveItemToDb(collectionRef, item);
+};
