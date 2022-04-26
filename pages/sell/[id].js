@@ -3,6 +3,8 @@ import Layout from "../../components/Layout/Layout";
 import Table from "../../components/Table/Table";
 import { potionList } from "../../utils/items/potionList";
 import { itemsForSale } from "../../utils/mockData/itemsForSale";
+import { fetchDocuments } from "../../utils/firebase/operations";
+import { potionsCollectionRef } from "../../utils/firebase/collectionRefs";
 
 const SellingDetails = ({ potionData, forSale }) => {
   return (
@@ -40,10 +42,10 @@ export const getStaticPaths = async () => {
  * @returns
  */
 export const getStaticProps = async (context) => {
+  const potionData = await fetchDocuments(potionsCollectionRef);
   const id = context.params.id;
 
-  // TODO: Replace this with database call
-  const data = potionList.find((potion) => {
+  const data = potionData.find((potion) => {
     return potion.id === id;
   });
 
