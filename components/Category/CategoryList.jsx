@@ -60,8 +60,7 @@ const CategoryList = ({ potionList }) => {
                     </ul>
 
                     <a
-                      onClick={() => console.log(item)}
-                      href="#"
+                      href={`sell/${item.id}`}
                       className={classNames(
                         "absolute inset-0 rounded-md",
                         "focus:z-10 focus:outline-none focus:ring-2 ring-blue-400"
