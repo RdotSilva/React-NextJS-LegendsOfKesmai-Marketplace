@@ -1,11 +1,9 @@
 import React from "react";
 import Sell from "../../components/Sell/Sell.jsx";
 import Layout from "../../components/Layout/Layout.jsx";
-import { db } from "../../utils/firebase/initFirebase.js";
 import { fetchDocuments } from "../../utils/firebase/operations.js";
-import { collection } from "firebase/firestore";
 
-const potionsCollectionRef = collection(db, "potions");
+import { potionsCollectionRef } from "../../utils/firebase/collectionRefs.js";
 
 /**
  * Render the /sell page
