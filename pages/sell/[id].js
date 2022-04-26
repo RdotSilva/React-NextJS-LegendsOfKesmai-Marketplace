@@ -1,17 +1,17 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
-import Table from "../../components/Table/Table";
 import { potionList } from "../../utils/items/potionList";
 import { itemsForSale } from "../../utils/mockData/itemsForSale";
 import { fetchDocuments } from "../../utils/firebase/operations";
 import { potionsCollectionRef } from "../../utils/firebase/collectionRefs";
+import SellCard from "../../components/Sell/SellCard";
 
 const SellingDetails = ({ potionData, forSale }) => {
   return (
     <>
       <Layout />
       <div>
-        <Table items={forSale} itemName={potionData.name} />
+        <SellCard potionData={potionData} />
       </div>
     </>
   );
