@@ -20,6 +20,22 @@ const SellCard = ({ potionData }) => {
     setQuantity(quantity + 1);
   };
 
+  /**
+   * Send item data to database when form is submitted
+   */
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log("Submitted!");
+    // TODO: Add items to database
+  };
+
+  /**
+   * Set price state when input changes
+   */
+  const onChangePrice = (e) => {
+    setPrice(e.target.value);
+  };
+
   const counter = (
     <div className="custom-number-input h-10 w-32">
       <label
@@ -81,7 +97,7 @@ const SellCard = ({ potionData }) => {
               id="price"
               placeholder="20000"
               value={price}
-              onChange={onChange}
+              onChange={onChangePrice}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
             />
