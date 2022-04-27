@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SellCard = ({ potionData }) => {
+  const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(0);
+
+  /**
+   * Decrease counter number
+   */
+  const decrementCounter = (e) => {
+    e.preventDefault();
+    setQuantity(quantity - 1);
+  };
+
+  /**
+   * Increase counter number
+   */
+  const incrementCounter = (e) => {
+    e.preventDefault();
+    setQuantity(quantity + 1);
+  };
+
   const counter = (
     <div className="custom-number-input h-10 w-32">
       <label
@@ -13,7 +32,7 @@ const SellCard = ({ potionData }) => {
         <button
           data-action="decrement"
           className=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
-          onClick={(e) => decrement(e)}
+          onClick={(e) => decrementCounter(e)}
         >
           <span className="m-auto text-2xl font-thin"></span>
         </button>
@@ -27,7 +46,7 @@ const SellCard = ({ potionData }) => {
         <button
           data-action="increment"
           className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
-          onClick={(e) => increment(e)}
+          onClick={(e) => incrementCounter(e)}
         >
           <span className="m-auto text-2xl font-thin">+</span>
         </button>
