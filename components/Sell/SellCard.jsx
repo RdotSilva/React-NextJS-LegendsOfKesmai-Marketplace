@@ -4,27 +4,30 @@ const SellCard = ({ potionData }) => {
   const counter = (
     <div className="custom-number-input h-10 w-32">
       <label
-        for="custom-input-number"
-        className="w-full text-gray-700 text-sm font-semibold"
+        htmlFor="custom-input-number"
+        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
       >
-        Counter Input
+        Quantity
       </label>
       <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
         <button
           data-action="decrement"
           className=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+          onClick={(e) => decrement(e)}
         >
-          <span className="m-auto text-2xl font-thin">−</span>
+          <span className="m-auto text-2xl font-thin"></span>
         </button>
         <input
           type="number"
           className="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
           name="custom-input-number"
-          value="0"
+          value={quantity}
+          onChange={() => console.log(quantity)}
         ></input>
         <button
           data-action="increment"
           className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+          onClick={(e) => increment(e)}
         >
           <span className="m-auto text-2xl font-thin">+</span>
         </button>
@@ -44,10 +47,11 @@ const SellCard = ({ potionData }) => {
             className="mr-3 h-6 sm:h-9"
             alt={potionData.name}
           ></img>
+          {counter}
 
           <div>
             <label
-              for="password"
+              htmlFor="price"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               Asking Price
@@ -57,6 +61,8 @@ const SellCard = ({ potionData }) => {
               name="price"
               id="price"
               placeholder="20000"
+              value={price}
+              onChange={onChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
             />
@@ -64,6 +70,7 @@ const SellCard = ({ potionData }) => {
           <button
             type="submit"
             className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={(e) => submitHander(e)}
           >
             Sell
           </button>
