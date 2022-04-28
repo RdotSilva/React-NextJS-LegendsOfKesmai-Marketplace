@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { sellingCollectionRef } from "../../utils/firebase/collectionRefs";
 import { addDocument } from "../../utils/firebase/operations";
+import { useRouter } from "next/router";
 
 const SellCard = ({ potionData }) => {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
+
+  const router = useRouter();
 
   /**
    * Decrease counter number
@@ -35,7 +38,14 @@ const SellCard = ({ potionData }) => {
       user: "Test123", // TODO: Get user info and populate this
     };
 
-    await addDocument(sellingCollectionRef, item);
+    try {
+      await addDocument(sellingCollectionRef, item);
+
+      // Redirect user home on success
+      router.push("/");
+    } catch (error) {
+      console.error(`Unable to add item to database: ${error}`);
+    }
   };
 
   /**
