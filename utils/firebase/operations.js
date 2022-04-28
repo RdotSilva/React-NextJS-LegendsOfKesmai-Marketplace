@@ -1,4 +1,4 @@
-import { getDocs } from "firebase/firestore";
+import { getDocs, addDoc } from "firebase/firestore";
 
 /**
  * Fetch documents from a database
@@ -21,5 +21,5 @@ export const fetchDocuments = async (collectionRef) => {
  * @param {*} item The item to add to the collection
  */
 export const addDocument = async (collectionRef, item) => {
-  saveItemToDb(collectionRef, item);
+  addDoc(collectionRef, item);
 };
