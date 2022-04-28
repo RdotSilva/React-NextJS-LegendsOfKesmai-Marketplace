@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { sellingCollectionRef } from "../../utils/firebase/collectionRefs";
+import { addDocument } from "../../utils/firebase/operations";
 
 const SellCard = ({ potionData }) => {
   const [quantity, setQuantity] = useState(0);
@@ -23,10 +25,17 @@ const SellCard = ({ potionData }) => {
   /**
    * Send item data to database when form is submitted
    */
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("Submitted!");
-    // TODO: Add items to database
+    const item = {
+      id: potionData.id,
+      price,
+      quantity,
+      date: new Date(),
+      user: "Test123", // TODO: Get user info and populate this
+    };
+
+    await addDocument(sellingCollectionRef, item);
   };
 
   /**
@@ -105,7 +114,7 @@ const SellCard = ({ potionData }) => {
           <button
             type="submit"
             className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            onClick={(e) => submitHander(e)}
+            onClick={(e) => submitHandler(e)}
           >
             Sell
           </button>
