@@ -2,7 +2,10 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import { itemsForSale } from "../../utils/mockData/itemsForSale";
 import { fetchDocuments } from "../../utils/firebase/operations";
-import { potionsCollectionRef } from "../../utils/firebase/collectionRefs";
+import {
+  potionsCollectionRef,
+  sellingCollectionRef,
+} from "../../utils/firebase/collectionRefs";
 import Table from "../../components/Table/Table";
 
 const BuyingDetails = ({ potionData, forSale }) => {
@@ -42,11 +45,20 @@ export const getStaticPaths = async () => {
  */
 export const getStaticProps = async (context) => {
   const potionData = await fetchDocuments(potionsCollectionRef);
+  const potionsForSale = await fetchDocuments(sellingCollectionRef);
   const id = context.params.id;
 
   const data = potionData.find((potion) => {
     return potion.id === id;
   });
+
+  console.log(potionsForSale);
+
+  const itemsFilter = potionsForSale.filter((item) => {
+    return item.id === id;
+  });
+
+  console.log(JSON.parse(JSON.stringify(itemsFilter)));
 
   // TODO: Replace this with Database call to fetch items per id
   const items = itemsForSale.filter((item) => {
@@ -54,6 +66,9 @@ export const getStaticProps = async (context) => {
   });
 
   return {
-    props: { potionData: data, forSale: items },
+    props: {
+      potionData: data,
+      forSale: JSON.parse(JSON.stringify(itemsFilter)), // TODO: Fix this, doesn't seem right
+    },
   };
 };
