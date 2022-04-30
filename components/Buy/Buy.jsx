@@ -8,7 +8,7 @@ import CategoryList from "../Category/CategoryList";
 const Buy = ({ potionList }) => {
   return (
     <div>
-      <CategoryList potionList={potionList} />
+      <CategoryList potionList={potionList} tradeType="buy" />
     </div>
   );
 };

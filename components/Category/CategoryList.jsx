@@ -6,7 +6,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const CategoryList = ({ potionList }) => {
+const CategoryList = ({ potionList, tradeType }) => {
   let [categories] = useState({
     Potions: [...potionList],
     Armor: [],
@@ -60,7 +60,7 @@ const CategoryList = ({ potionList }) => {
                     </ul>
 
                     <a
-                      href={`sell/${item.id}`}
+                      href={`${tradeType}/${item.id}`}
                       className={classNames(
                         "absolute inset-0 rounded-md",
                         "focus:z-10 focus:outline-none focus:ring-2 ring-blue-400"

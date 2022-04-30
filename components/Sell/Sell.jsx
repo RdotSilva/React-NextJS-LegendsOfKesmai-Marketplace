@@ -9,7 +9,7 @@ const Sell = ({ potionList }) => {
   return (
     <div>
       {console.log(potionList)}
-      <CategoryList potionList={potionList} />
+      <CategoryList potionList={potionList} tradeType="sell" />
     </div>
   );
 };
