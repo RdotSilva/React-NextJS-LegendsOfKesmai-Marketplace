@@ -21,6 +21,9 @@ const Table = ({ items, itemName }) => {
                 Price
               </th>
               <th scope="col" className="px-6 py-3">
+                Quantity
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Date
               </th>
             </tr>
@@ -34,7 +37,8 @@ const Table = ({ items, itemName }) => {
                 >
                   <a href="https://discordapp.com/users/TODO">{item.user}</a>
                 </th>
-                <td className="px-6 py-4">{item.value}</td>
+                <td className="px-6 py-4">{item.price}</td>
+                <td className="px-6 py-4">{item.quantity}</td>
                 <td className="px-6 py-4">
                   {moment(item.date).format("MMMM Do YYYY, h:mm a")}
                 </td>
