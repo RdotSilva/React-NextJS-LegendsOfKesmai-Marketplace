@@ -44,31 +44,32 @@ export const getStaticPaths = async () => {
  * @returns
  */
 export const getStaticProps = async (context) => {
+  // Collection references for Firestore database
   const potionData = await fetchDocuments(potionsCollectionRef);
   const potionsForSale = await fetchDocuments(sellingCollectionRef);
+
+  // Fetch the item ID from params
   const id = context.params.id;
 
+  // Filter potion database info to get the info for the specific potion by ID
   const data = potionData.find((potion) => {
     return potion.id === id;
   });
 
-  console.log(potionsForSale);
-
-  const itemsFilter = potionsForSale.filter((item) => {
+  // Find all sales by potion ID
+  const potionsForSaleById = potionsForSale.filter((item) => {
     return item.id === id;
   });
 
-  console.log(JSON.parse(JSON.stringify(itemsFilter)));
-
-  // TODO: Replace this with Database call to fetch items per id
-  const items = itemsForSale.filter((item) => {
-    return item.id === id;
+  // Convert Firestore timestamp to JS date
+  const potionsForSaleByIdWithDates = potionsForSaleById.map((item) => {
+    return { ...item, date: item.date.toDate() };
   });
 
   return {
     props: {
       potionData: data,
-      forSale: JSON.parse(JSON.stringify(itemsFilter)), // TODO: Fix this, doesn't seem right
+      forSale: JSON.parse(JSON.stringify(potionsForSaleByIdWithDates)),
     },
   };
 };
