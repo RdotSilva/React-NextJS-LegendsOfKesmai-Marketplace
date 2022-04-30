@@ -12,7 +12,11 @@ const BuyingDetails = ({ potionData, forSale }) => {
   return (
     <>
       <Layout />
-      <Table items={forSale} itemName={potionData.name} />
+      {forSale.length ? (
+        <Table items={forSale} itemName={potionData.name} />
+      ) : (
+        <div>TODO: Add no items for sale component</div>
+      )}
     </>
   );
 };
