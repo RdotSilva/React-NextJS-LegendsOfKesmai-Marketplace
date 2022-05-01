@@ -18,6 +18,9 @@ const Table = ({ items, itemName }) => {
                 User
               </th>
               <th scope="col" className="px-6 py-3">
+                Item
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Price
               </th>
               <th scope="col" className="px-6 py-3">
@@ -37,6 +40,13 @@ const Table = ({ items, itemName }) => {
                 >
                   <a href="https://discordapp.com/users/TODO">{item.user}</a>
                 </th>
+                <td className="px-6 py-4">
+                  <img
+                    src={`/images/item-${item.id}.png`}
+                    className="mr-3 h-6 sm:h-9"
+                    alt={item.name}
+                  ></img>
+                </td>
                 <td className="px-6 py-4">{item.price}</td>
                 <td className="px-6 py-4">{item.quantity}</td>
                 <td className="px-6 py-4">
