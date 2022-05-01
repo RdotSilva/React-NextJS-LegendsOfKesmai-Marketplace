@@ -1,8 +1,17 @@
 import React from "react";
+import Table from "../Table/Table";
 
 // Render a table showing the current users listings
-const MyListings = () => {
-  return <div>MyListings</div>;
+const MyListings = ({ itemListings }) => {
+  return (
+    <div>
+      {itemListings?.length ? (
+        <Table items={itemListings} itemName={"Test"} />
+      ) : (
+        <div>TODO: Add no items for sale component</div>
+      )}
+    </div>
+  );
 };
 
 export default MyListings;
