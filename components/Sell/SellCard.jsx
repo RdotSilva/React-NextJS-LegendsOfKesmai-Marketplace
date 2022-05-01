@@ -31,6 +31,7 @@ const SellCard = ({ potionData }) => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const item = {
+      name: potionData.name,
       id: potionData.id,
       price,
       quantity,
@@ -41,8 +42,14 @@ const SellCard = ({ potionData }) => {
     try {
       await addDocument(sellingCollectionRef, item);
 
-      // Redirect user home on success
-      router.push("/");
+      // Redirect user on success -> also pass in item data to use in success component
+      router.push(
+        {
+          pathname: "/sell/success",
+          query: item,
+        },
+        "/sell/success"
+      );
     } catch (error) {
       console.error(`Unable to add item to database: ${error}`);
     }
