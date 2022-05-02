@@ -6,7 +6,7 @@ const MyListings = ({ itemListings }) => {
   return (
     <div>
       {itemListings?.length ? (
-        <Table items={itemListings} itemName={"Test"} />
+        <Table items={itemListings} itemName={"My Listings"} />
       ) : (
         <div>TODO: Add no items for sale component</div>
       )}
