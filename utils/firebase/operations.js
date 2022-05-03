@@ -1,4 +1,4 @@
-import { getDocs, addDoc } from "firebase/firestore";
+import { getDocs, deleteDoc, doc, setDoc } from "firebase/firestore";
 
 /**
  * Fetch documents from a database
@@ -17,9 +17,18 @@ export const fetchDocuments = async (collectionRef) => {
 
 /**
  * Add a document to the database
+ * This will automatically add the document reference ID to a new field
  * @param {*} collectionRef The collection reference to add data to
  * @param {*} item The item to add to the collection
  */
 export const addDocument = async (collectionRef, item) => {
-  addDoc(collectionRef, item);
+  try {
+    const docRef = doc(collectionRef);
+    await setDoc(docRef, {
+      ...item,
+      docId: docRef.id,
+    });
+  } catch (error) {
+    console.log(`Unable to add item ${item} to Database`);
+  }
 };
