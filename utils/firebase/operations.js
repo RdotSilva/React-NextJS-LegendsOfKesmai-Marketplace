@@ -32,3 +32,11 @@ export const addDocument = async (collectionRef, item) => {
     console.log(`Unable to add item ${item} to Database`);
   }
 };
+
+/**
+ * Delete a document
+ * @param {*} collectionRef The collection reference to delete
+ */
+export const deleteDocument = async (collectionRef) => {
+  deleteDoc(collectionRef);
+};
