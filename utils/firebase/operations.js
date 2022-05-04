@@ -38,5 +38,5 @@ export const addDocument = async (collectionRef, item) => {
  * @param {*} collectionRef The collection reference to delete
  */
 export const deleteDocument = async (collectionRef) => {
-  deleteDoc(collectionRef);
+  await deleteDoc(collectionRef);
 };
