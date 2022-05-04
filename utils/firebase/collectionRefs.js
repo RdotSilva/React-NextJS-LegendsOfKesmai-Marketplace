@@ -1,8 +1,8 @@
 import { db } from "./initFirebase";
 import { collection } from "firebase/firestore";
 
-/**
- * This file will hold all of the collection references for now
- */
+// Potion data
 export const potionsCollectionRef = collection(db, "potions");
+
+// Listings for items that are being sold
 export const sellingCollectionRef = collection(db, "selling");
