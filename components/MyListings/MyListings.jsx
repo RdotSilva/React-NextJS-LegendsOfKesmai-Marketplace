@@ -1,5 +1,6 @@
 import React from "react";
 import Table from "../Table/Table";
+import NoListings from "./NoListings";
 
 // Render a table showing the current users listings
 const MyListings = ({ itemListings }) => {
@@ -8,7 +9,7 @@ const MyListings = ({ itemListings }) => {
       {itemListings?.length ? (
         <Table items={itemListings} itemName={"My Listings"} isMyListingTable />
       ) : (
-        <div>TODO: Add no items for sale component</div>
+        <NoListings />
       )}
     </div>
   );
