@@ -4,8 +4,15 @@ import moment from "moment";
 import { deleteDocument } from "../../utils/firebase/operations";
 import { doc } from "firebase/firestore";
 import { db } from "../../utils/firebase/initFirebase";
+import { useRouter } from "next/router";
 
 const Table = ({ items, itemName, isMyListingTable }) => {
+  const router = useRouter();
+
+  /**
+   * Use this to refresh data after changes have been made (removing an item from table)
+   */
+  const refreshData = () => router.replace(router.asPath);
   /**
    * Delete a listing from the database
    * This should only be allowed for the user who owns the listing
@@ -13,7 +20,8 @@ const Table = ({ items, itemName, isMyListingTable }) => {
    */
   const onDeleteListing = async (docId) => {
     const listingRef = doc(db, "selling", docId);
-    deleteDocument(listingRef);
+    await deleteDocument(listingRef);
+    refreshData();
   };
 
   return (
