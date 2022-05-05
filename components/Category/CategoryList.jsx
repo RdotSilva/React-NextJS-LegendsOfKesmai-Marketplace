@@ -39,11 +39,11 @@ const CategoryList = ({ potionList, tradeType }) => {
             <Tab.Panel
               key={idx}
               className={classNames(
-                "bg-white rounded-xl p-3",
+                "bg-color-1 rounded-xl p-3 ",
                 "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60"
               )}
             >
-              <ul className="grid grid-cols-4 gap-1 items-center">
+              <ul className="grid grid-cols-4 gap-1 items-center ">
                 {items.map((item) => (
                   <li
                     key={item.slug}
@@ -55,15 +55,14 @@ const CategoryList = ({ potionList, tradeType }) => {
                       alt={item.name}
                     ></img>
 
-                    <ul className="mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500">
+                    <ul className="mt-1 space-x-1 text-xs font-normal leading-4 text-coolGray-500 ">
                       <li>{item.name}</li>
                     </ul>
 
                     <a
                       href={`${tradeType}/${item.id}`}
                       className={classNames(
-                        "absolute inset-0 rounded-md",
-                        "focus:z-10 focus:outline-none focus:ring-2 ring-blue-400"
+                        "absolute inset-0 rounded-md hover:ring-2 ring-purple-800"
                       )}
                     />
                   </li>
