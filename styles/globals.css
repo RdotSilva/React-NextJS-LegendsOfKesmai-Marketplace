@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: #575c96;
+  background-color: #9696b5;
 }
 
 /*
@@ -22,4 +22,26 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .custom-number-input button:focus {
   outline: none !important;
+}
+
+/* Setting up colors based on #7878a0 */
+/* These will all be different shades of that original color */
+.bg-color-1 {
+  background-color: #f0f0f4;
+}
+
+.bg-color-2 {
+  background-color: #d2d2df;
+}
+
+.bg-color-3 {
+  background-color: #b4b4ca;
+}
+
+.bg-color-4 {
+  background-color: #9696b5;
+}
+
+.bg-color-5 {
+  background-color: #7878a0;
 }
