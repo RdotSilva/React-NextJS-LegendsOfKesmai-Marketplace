@@ -1,20 +1,10 @@
-import { useState } from "react";
 import { Tab } from "@headlessui/react";
-import Link from "next/link";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const CategoryList = ({ potionList, tradeType }) => {
-  let [categories] = useState({
-    Potions: [...potionList],
-    Armor: [],
-    Jewelry: [],
-    Weapons: [],
-    Misc: [],
-  });
-
+const CategoryList = ({ categories, tradeType }) => {
   return (
     <Tab.Group>
       <Tab.List className="category-container flex p-1 bg-blue-900/20 rounded-xl">
