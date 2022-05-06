@@ -5,11 +5,10 @@ import CategoryList from "../Category/CategoryList";
  * This is the main component that is rendered on the /sell page
  * It should show a row of clickable item categories and each category should have a dropdown for items
  */
-const Sell = ({ potionList }) => {
+const Sell = ({ categories }) => {
   return (
     <div>
-      {console.log(potionList)}
-      <CategoryList potionList={potionList} tradeType="sell" />
+      <CategoryList categories={categories} tradeType="sell" />
     </div>
   );
 };
