@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
-import { itemsForSale } from "../../utils/mockData/itemsForSale";
 import { fetchDocuments } from "../../utils/firebase/operations";
 import {
   potionsCollectionRef,
   sellingCollectionRef,
 } from "../../utils/firebase/collectionRefs";
 import Table from "../../components/Table/Table";
+import NoListings from "../../components/NoListings/NoListings";
 
 const BuyingDetails = ({ potionData, forSale }) => {
   return (
@@ -15,7 +15,7 @@ const BuyingDetails = ({ potionData, forSale }) => {
       {forSale.length ? (
         <Table items={forSale} itemName={potionData.name} />
       ) : (
-        <div>TODO: Add no items for sale component</div>
+        <NoListings item={potionData.name} />
       )}
     </>
   );
