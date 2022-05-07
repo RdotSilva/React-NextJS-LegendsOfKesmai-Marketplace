@@ -7,11 +7,11 @@ import { potionsCollectionRef } from "../../utils/firebase/collectionRefs.js";
 /**
  * Render the /buy page
  */
-function BuyPage({ potionList }) {
+function BuyPage({ categories }) {
   return (
     <>
       <Layout />
-      <Buy potionList={potionList} />
+      <Buy categories={categories} />
     </>
   );
 }
@@ -25,7 +25,22 @@ export default BuyPage;
  */
 export const getStaticProps = async (context) => {
   const potionData = await fetchDocuments(potionsCollectionRef);
+  // TODO: Fetch these from database then they are seeded
+  // const armorData = await fetchDocuments(armorCollectionRef);
+  // const jewelryData = await fetchDocuments(jewelryCollectionRef);
+  // const weaponsData = await fetchDocuments(weaponsCollectionRef);
+  // const miscData = await fetchDocuments(miscCollectionRef);
+
+  const categories = {
+    Potions: potionData,
+    // TODO: Pass the new data for each category into the components
+    // Armor: armorData,
+    // Jewelry: jewelryData,
+    // Weapons: weaponsData,
+    // Misc: miscData,
+  };
+
   return {
-    props: { potionList: potionData },
+    props: { categories },
   };
 };
