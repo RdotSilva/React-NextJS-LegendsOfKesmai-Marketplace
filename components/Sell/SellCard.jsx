@@ -63,10 +63,10 @@ const SellCard = ({ potionData }) => {
   };
 
   const counter = (
-    <div className="custom-number-input h-10 w-32">
+    <div className="mb-2 custom-number-input h-10 w-32">
       <label
         htmlFor="custom-input-number"
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+        className="block text-sm font-medium text-gray-900 dark:text-gray-300"
       >
         Quantity
       </label>
@@ -76,7 +76,7 @@ const SellCard = ({ potionData }) => {
           className=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
           onClick={(e) => decrementCounter(e)}
         >
-          <span className="m-auto text-2xl font-thin"></span>
+          <span className="m-auto text-2xl font-thin">-</span>
         </button>
         <input
           type="number"
@@ -97,7 +97,7 @@ const SellCard = ({ potionData }) => {
   );
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <div className="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form className="space-y-6" action="#">
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -130,7 +130,7 @@ const SellCard = ({ potionData }) => {
           </div>
           <button
             type="submit"
-            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-one dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             onClick={(e) => submitHandler(e)}
           >
             Sell
