@@ -4,7 +4,7 @@ import { addDocument } from "../../utils/firebase/operations";
 import { useRouter } from "next/router";
 
 const SellCard = ({ potionData }) => {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(0);
 
   const router = useRouter();
@@ -14,7 +14,10 @@ const SellCard = ({ potionData }) => {
    */
   const decrementCounter = (e) => {
     e.preventDefault();
-    setQuantity(quantity - 1);
+    // Prevent user from listing less than 1 item per listing
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
   };
 
   /**
