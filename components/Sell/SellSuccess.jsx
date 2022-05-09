@@ -13,8 +13,8 @@ const SellSuccess = ({ itemListing }) => {
           </span>
         </h1>
         <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
-          You have listed {itemListing.quantity} {itemListing.name} for{" "}
-          {itemListing.price} per item
+          You have listed {itemListing.quantity} {itemListing.name}
+          {itemListing.quantity > 1 ? "s" : ""} for {itemListing.price} per item
         </p>
       </div>
     </div>
