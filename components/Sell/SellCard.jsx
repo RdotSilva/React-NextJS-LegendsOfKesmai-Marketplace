@@ -3,9 +3,17 @@ import { sellingCollectionRef } from "../../utils/firebase/collectionRefs";
 import { addDocument } from "../../utils/firebase/operations";
 import { useRouter } from "next/router";
 
+import { useForm } from "react-hook-form";
+
 const SellCard = ({ potionData }) => {
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(0);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const router = useRouter();
 
@@ -42,19 +50,27 @@ const SellCard = ({ potionData }) => {
       user: "Test123", // TODO: Get user info and populate this
     };
 
-    try {
-      await addDocument(sellingCollectionRef, item);
+    console.log(`listing item: ${JSON.stringify(item)}`);
 
-      // Redirect user on success -> also pass in item data to use in success component
-      router.push(
-        {
-          pathname: "/sell/success",
-          query: item,
-        },
-        "/sell/success"
-      );
-    } catch (error) {
-      console.error(`Unable to add item to database: ${error}`);
+    console.log(`errors: ${JSON.stringify(errors)}`);
+
+    if (!errors.askingPrice) {
+      try {
+        await addDocument(sellingCollectionRef, item);
+
+        // Redirect user on success -> also pass in item data to use in success component
+        router.push(
+          {
+            pathname: "/sell/success",
+            query: item,
+          },
+          "/sell/success"
+        );
+      } catch (error) {
+        console.error(`Unable to add item to database: ${error}`);
+      }
+    } else {
+      console.log(errors.askingPrice);
     }
   };
 
@@ -88,6 +104,7 @@ const SellCard = ({ potionData }) => {
           value={quantity}
           onChange={() => console.log(quantity)}
         ></input>
+
         <button
           data-action="increment"
           className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
@@ -129,7 +146,13 @@ const SellCard = ({ potionData }) => {
               onChange={onChangePrice}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
+              {...register("askingPrice", { required: true, min: 1 })}
             />
+            {errors.askingPrice && (
+              <div className="mb-3 text-normal text-red-500 ">
+                {errors.askingPrice.message}
+              </div>
+            )}
           </div>
           <button
             type="submit"
