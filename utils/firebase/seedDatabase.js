@@ -1,6 +1,7 @@
 import { db } from "./initFirebase.js";
-import { collection, addDoc, getDocs, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { potionList } from "../items/potionList.js";
+import { armorList } from "../items/armorList.js";
 
 /**
  * Save an item to the database
@@ -24,3 +25,4 @@ const seedDatabaseItems = (itemsToSeed, collectionName) => {
 };
 
 seedDatabaseItems(potionList, "potions");
+seedDatabaseItems(armorList, "armor");
