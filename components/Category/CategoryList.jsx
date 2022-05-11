@@ -41,7 +41,7 @@ const CategoryList = ({ categories, tradeType }) => {
               >
                 <div className="flex flex-col justify-center items-center">
                   <img
-                    src={`/images/${item.image}`}
+                    src={`/images/${item.category}/${item.image}`}
                     className="mr-3 h-6 sm:h-9"
                     alt={item.name}
                   ></img>
