@@ -3,15 +3,18 @@ import Layout from "../../components/Layout/Layout";
 import { potionList } from "../../utils/items/potionList";
 import { itemsForSale } from "../../utils/mockData/itemsForSale";
 import { fetchDocuments } from "../../utils/firebase/operations";
-import { potionsCollectionRef } from "../../utils/firebase/collectionRefs";
+import {
+  armorCollectionRef,
+  potionsCollectionRef,
+} from "../../utils/firebase/collectionRefs";
 import SellCard from "../../components/Sell/SellCard";
 
-const SellingDetails = ({ potionData, forSale }) => {
+const SellingDetails = ({ itemData, forSale }) => {
   return (
     <>
       <Layout />
       <div>
-        <SellCard potionData={potionData} />
+        <SellCard itemData={itemData} />
       </div>
     </>
   );
@@ -43,11 +46,17 @@ export const getStaticPaths = async () => {
  */
 export const getStaticProps = async (context) => {
   const potionData = await fetchDocuments(potionsCollectionRef);
+  const armorData = await fetchDocuments(armorCollectionRef);
+
+  const allItems = [...potionData, ...armorData];
+
   const id = context.params.id;
 
-  const data = potionData.find((potion) => {
-    return potion.id === id;
+  const data = allItems.find((item) => {
+    return item.id === id;
   });
+
+  console.log(allItems);
 
   // TODO: Replace this with Database call to fetch items per slug
   const items = itemsForSale.filter((item) => {
@@ -55,6 +64,6 @@ export const getStaticProps = async (context) => {
   });
 
   return {
-    props: { potionData: data, forSale: items },
+    props: { itemData: data, forSale: items },
   };
 };
