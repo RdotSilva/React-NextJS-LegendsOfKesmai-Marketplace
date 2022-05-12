@@ -27,9 +27,14 @@ export default SellingDetails;
  * @returns All of the IDs located inside of potion list
  */
 export const getStaticPaths = async () => {
-  const paths = potionList.map((potion) => {
+  // TODO: Fix duplicate call to database -> this is slowing things down
+  const potionData = await fetchDocuments(potionsCollectionRef);
+  const armorData = await fetchDocuments(armorCollectionRef);
+  const allItems = [...potionData, ...armorData];
+
+  const paths = allItems.map((item) => {
     return {
-      params: { id: potion.id },
+      params: { id: item.id },
     };
   });
 
