@@ -22,9 +22,9 @@ export const armorList = [
   },
   {
     name: "Crocodile Boots",
-    image: "item-001224.png",
+    image: "item-00122.png",
     slug: "crocodileboots",
-    id: "00274",
+    id: "00122",
     category: "armor",
   },
   {
