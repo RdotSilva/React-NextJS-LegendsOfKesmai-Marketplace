@@ -23,6 +23,20 @@ export default function useFirebaseAuth() {
     setLoading(false);
   };
 
+  // Clear auth data
+  const clear = () => {
+    setAuthUser(null);
+    setLoading(true);
+  };
+
+  const signInWithEmailAndPassword = (email, password) =>
+    auth.signInWithEmailAndPassword(email, password);
+
+  const createUserWithEmailAndPassword = (email, password) =>
+    auth.createUserWithEmailAndPassword(email, password);
+
+  const signOut = () => auth.signOut().then(clear);
+
   // listen for Firebase state change
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(authStateChanged);
@@ -32,5 +46,8 @@ export default function useFirebaseAuth() {
   return {
     authUser,
     loading,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signOut,
   };
 }
