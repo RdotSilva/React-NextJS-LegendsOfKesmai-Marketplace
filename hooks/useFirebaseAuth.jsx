@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { firebaseApp } from "../utils/firebase/initFirebase";
+import { auth } from "../utils/firebase/initFirebase";
 
 const formatAuthUser = (user) => ({
   uid: user.uid,
@@ -25,7 +25,7 @@ export default function useFirebaseAuth() {
 
   // listen for Firebase state change
   useEffect(() => {
-    const unsubscribe = firebaseApp.auth().onAuthStateChanged(authStateChanged);
+    const unsubscribe = auth.onAuthStateChanged(authStateChanged);
     return () => unsubscribe();
   }, []);
 
