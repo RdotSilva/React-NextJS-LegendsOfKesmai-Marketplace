@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
-import { auth } from "../utils/firebase/initFirebase";
+import { firebaseApp } from "../utils/firebase/initFirebase";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 
 const formatAuthUser = (user) => ({
   uid: user.uid,
@@ -9,6 +17,8 @@ const formatAuthUser = (user) => ({
 export default function useFirebaseAuth() {
   const [authUser, setAuthUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const auth = getAuth(firebaseApp);
 
   const authStateChanged = async (authState) => {
     if (!authState) {
@@ -29,25 +39,25 @@ export default function useFirebaseAuth() {
     setLoading(true);
   };
 
-  const signInWithEmailAndPassword = (email, password) =>
-    auth.signInWithEmailAndPassword(email, password);
+  const signInUser = (email, password) =>
+    signInWithEmailAndPassword(auth, email, password);
 
-  const createUserWithEmailAndPassword = (email, password) =>
-    auth.createUserWithEmailAndPassword(email, password);
+  const createUser = (email, password) =>
+    createUserWithEmailAndPassword(auth, email, password);
 
-  const signOut = () => auth.signOut().then(clear);
+  const signOutUser = () => signOut(auth).then(clear);
 
   // listen for Firebase state change
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(authStateChanged);
+    const unsubscribe = onAuthStateChanged(auth, authStateChanged);
     return () => unsubscribe();
   }, []);
 
   return {
     authUser,
     loading,
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    signOut,
+    signInUser,
+    createUser,
+    signOutUser,
   };
 }
