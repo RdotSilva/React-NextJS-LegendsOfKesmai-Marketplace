@@ -10,14 +10,15 @@ const SignUpPage = () => {
   const router = useRouter();
   const [error, setError] = useState(null);
 
-  const { createUserWithEmailAndPassword } = useFirebaseAuth();
+  const { createUser } = useFirebaseAuth();
 
   const onSubmit = (event) => {
     setError(null);
     //check if passwords match. If they do, create user in Firebase
     // and redirect to your logged in page.
+
     if (passwordOne === passwordTwo)
-      createUserWithEmailAndPassword(email, passwordOne)
+      createUser(email, passwordOne)
         .then((authUser) => {
           console.log("Success. The user is created in Firebase");
           router.push("/logged_in");
@@ -44,12 +45,7 @@ const SignUpPage = () => {
             Create an account
           </h2>
         </div>
-        <form
-          className="mt-8 space-y-6"
-          action="#"
-          method="POST"
-          onSubmit={onSubmit}
-        >
+        <form className="mt-8 space-y-6" method="POST" onSubmit={onSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
