@@ -19,6 +19,3 @@ export const firebaseApp = initializeApp(firebaseConfig);
 
 // Export db for us in other files
 export const db = getFirestore(firebaseApp);
-
-// Export auth
-export const auth = getAuth(firebaseApp);
