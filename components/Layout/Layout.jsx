@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Header from "../Header/Header";
+import NavBar from "../NavBar/NavBar";
 
 /**
  * Custom layout component that allows you to create a custom head
@@ -18,7 +18,7 @@ const Layout = ({ title, keywords, description, children }) => {
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <NavBar />
       <main className="container mx-auto my-7">{children}</main>
     </div>
   );
