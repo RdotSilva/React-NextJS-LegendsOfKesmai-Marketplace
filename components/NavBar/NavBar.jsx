@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = () => {
+const NavBar = () => {
   return (
     <div>
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
@@ -90,4 +90,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default NavBar;
