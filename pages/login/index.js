@@ -45,7 +45,7 @@ const LoginPage = () => {
           <form className="mt-8 space-y-6" method="POST" onSubmit={onSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
-              <div>
+              <div className="m-1">
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
@@ -65,7 +65,7 @@ const LoginPage = () => {
                   placeholder="Email address"
                 />
               </div>
-              <div>
+              <div className="m-1">
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
