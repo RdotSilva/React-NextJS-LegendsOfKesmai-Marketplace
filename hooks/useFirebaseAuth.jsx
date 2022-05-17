@@ -7,6 +7,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 const formatAuthUser = (user) => ({
@@ -47,6 +48,8 @@ export default function useFirebaseAuth() {
 
   const signOutUser = () => signOut(auth).then(clear);
 
+  const resetUserPassword = () => sendPasswordResetEmail(auth, email);
+
   // listen for Firebase state change
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, authStateChanged);
@@ -59,5 +62,6 @@ export default function useFirebaseAuth() {
     signInUser,
     createUser,
     signOutUser,
+    resetUserPassword,
   };
 }
