@@ -20,7 +20,7 @@ const LoginPage = () => {
     signInUser(email, password)
       .then((authUser) => {
         console.log("test");
-        router.push("/mylistings");
+        router.push("/my-listings");
       })
       .catch((error) => {
         setError(error.message);
