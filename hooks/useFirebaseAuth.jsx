@@ -48,7 +48,7 @@ export default function useFirebaseAuth() {
 
   const signOutUser = () => signOut(auth).then(clear);
 
-  const resetUserPassword = () => sendPasswordResetEmail(auth, email);
+  const resetUserPassword = (email) => sendPasswordResetEmail(auth, email);
 
   // listen for Firebase state change
   useEffect(() => {

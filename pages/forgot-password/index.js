@@ -16,7 +16,7 @@ const ForgotPasswordPage = () => {
   const onSubmit = (event) => {
     console.log(`EMAIL: ${email}`);
     setError(null);
-    resetUserPassword(userAuth, email)
+    resetUserPassword(email)
       .then((authUser) => {
         router.push("/reset-success");
       })
