@@ -1,9 +1,8 @@
 import React from "react";
-
-import useFirebaseAuth from "../../hooks/useFirebaseAuth";
+import { useAuth } from "../../context/authUserContext";
 
 const NavBar = () => {
-  const { authUser, loading, signOutUser } = useFirebaseAuth();
+  const { authUser, loading, signOutUser } = useAuth();
 
   return (
     <div>

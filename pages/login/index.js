@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-import useFirebaseAuth from "../../hooks/useFirebaseAuth";
+import { useAuth } from "../../context/authUserContext";
 import Layout from "../../components/Layout/Layout";
 
 const LoginPage = () => {
@@ -12,7 +12,7 @@ const LoginPage = () => {
   const router = useRouter();
   const [error, setError] = useState(null);
 
-  const { signInUser } = useFirebaseAuth();
+  const { signInUser } = useAuth();
 
   const onSubmit = (event) => {
     console.log(email);
