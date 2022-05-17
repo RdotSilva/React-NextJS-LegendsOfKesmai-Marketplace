@@ -6,21 +6,19 @@ import { useRouter } from "next/router";
 import { useAuth } from "../../context/authUserContext";
 import Layout from "../../components/Layout/Layout";
 
-const LoginPage = () => {
+const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const router = useRouter();
   const [error, setError] = useState(null);
 
-  const { signInUser } = useAuth();
+  const { userAuth, resetUserPassword } = useAuth();
 
   const onSubmit = (event) => {
-    console.log(email);
+    console.log(`EMAIL: ${email}`);
     setError(null);
-    signInUser(email, password)
+    resetUserPassword(userAuth, email)
       .then((authUser) => {
-        console.log("test");
-        router.push("/my-listings");
+        router.push("/reset-success");
       })
       .catch((error) => {
         setError(error.message);
@@ -39,7 +37,7 @@ const LoginPage = () => {
               alt="Workflow"
             />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Sign In
+              Reset Password
             </h2>
           </div>
           <form className="mt-8 space-y-6" method="POST" onSubmit={onSubmit}>
@@ -58,43 +56,12 @@ const LoginPage = () => {
                   autoComplete="email"
                   required
                   className="appearance-none rounded-none relative block
-                  w-full px-3 py-2 border border-gray-300
-                  placeholder-gray-500 text-gray-900 rounded-t-md
-                  focus:outline-none focus:ring-indigo-500
-                  focus:border-indigo-500 focus:z-10 sm:text-sm"
+                w-full px-3 py-2 border border-gray-300
+                placeholder-gray-500 text-gray-900 rounded-lg
+                focus:outline-none focus:ring-indigo-500
+                focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Email address"
                 />
-              </div>
-              <div className="m-1">
-                <label htmlFor="password" className="sr-only">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  autoComplete="current-password"
-                  required
-                  className="appearance-none rounded-none relative block
-                  w-full px-3 py-2 border border-gray-300
-                  placeholder-gray-500 text-gray-900 rounded-b-md
-                  focus:outline-none focus:ring-indigo-500
-                  focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
-                />
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="text-sm">
-                <a
-                  href="/forgot-password"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot your password?
-                </a>
               </div>
             </div>
 
@@ -102,13 +69,13 @@ const LoginPage = () => {
               <button
                 type="submit"
                 className="group relative w-full flex justify-center
-                py-2 px-4 border border-transparent text-sm font-medium
-                rounded-md text-white bg-indigo-600 hover:bg-indigo-700
-                focus:outline-none focus:ring-2 focus:ring-offset-2
-                focus:ring-indigo-500"
+              py-2 px-4 border border-transparent text-sm font-medium
+              rounded-md text-white bg-indigo-600 hover:bg-indigo-700
+              focus:outline-none focus:ring-2 focus:ring-offset-2
+              focus:ring-indigo-500"
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
-                Sign in
+                Reset Password
               </button>
             </div>
           </form>
@@ -118,4 +85,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgotPasswordPage;
