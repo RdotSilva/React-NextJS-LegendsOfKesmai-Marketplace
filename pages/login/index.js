@@ -87,17 +87,6 @@ const LoginPage = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="text-sm">
-                <a
-                  href="/forgot-password"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot your password?
-                </a>
-              </div>
-            </div>
-
             <div>
               <button
                 type="submit"
@@ -110,6 +99,16 @@ const LoginPage = () => {
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
                 Sign in
               </button>
+            </div>
+            <div className="flex justify-center items-center">
+              <div className="text-smr">
+                <a
+                  href="/forgot-password"
+                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                >
+                  Forgot your password?
+                </a>
+              </div>
             </div>
           </form>
         </div>
