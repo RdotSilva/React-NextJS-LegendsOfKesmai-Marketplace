@@ -21,7 +21,9 @@ const ForgotPasswordPage = () => {
         router.push("/reset-success");
       })
       .catch((error) => {
+        // TODO: Better error handling when email doesn't exist
         setError(error.message);
+        router.push("/reset-success");
       });
     event.preventDefault();
   };
