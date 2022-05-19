@@ -2,20 +2,21 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import { fetchDocuments } from "../../utils/firebase/operations";
 import {
+  armorCollectionRef,
   potionsCollectionRef,
   sellingCollectionRef,
 } from "../../utils/firebase/collectionRefs";
 import Table from "../../components/Table/Table";
 import NoListings from "../../components/NoListings/NoListings";
 
-const BuyingDetails = ({ potionData, forSale }) => {
+const BuyingDetails = ({ itemData, forSale }) => {
   return (
     <>
       <Layout />
       {forSale.length ? (
-        <Table items={forSale} itemName={potionData.name} />
+        <Table items={forSale} itemName={itemData.name} />
       ) : (
-        <NoListings item={potionData.name} />
+        <NoListings item={itemData.name} />
       )}
     </>
   );
@@ -28,11 +29,14 @@ export default BuyingDetails;
  * @returns All of the IDs located inside of potion list
  */
 export const getStaticPaths = async () => {
-  const potionData = await fetchDocuments(potionsCollectionRef);
+  const itemData = await fetchDocuments(potionsCollectionRef);
+  const armorData = await fetchDocuments(armorCollectionRef);
 
-  const paths = potionData.map((potion) => {
+  const allItems = [...itemData, ...armorData];
+
+  const paths = allItems.map((item) => {
     return {
-      params: { id: potion.id },
+      params: { id: item.id },
     };
   });
 
@@ -49,31 +53,33 @@ export const getStaticPaths = async () => {
  */
 export const getStaticProps = async (context) => {
   // Collection references for Firestore database
-  const potionData = await fetchDocuments(potionsCollectionRef);
-  const potionsForSale = await fetchDocuments(sellingCollectionRef);
 
-  // Fetch the item ID from params
+  const itemData = await fetchDocuments(potionsCollectionRef);
+  const armorData = await fetchDocuments(armorCollectionRef);
+  const sellingData = await fetchDocuments(sellingCollectionRef);
+
+  const allItems = [...itemData, ...armorData];
+
   const id = context.params.id;
 
-  // Filter potion database info to get the info for the specific potion by ID
-  const data = potionData.find((potion) => {
-    return potion.id === id;
+  const data = allItems.find((item) => {
+    return item.id === id;
   });
 
   // Find all sales by potion ID
-  const potionsForSaleById = potionsForSale.filter((item) => {
+  const itemsForSaleById = sellingData.filter((item) => {
     return item.id === id;
   });
 
   // Convert Firestore timestamp to JS date
-  const potionsForSaleByIdWithDates = potionsForSaleById.map((item) => {
+  const itemsForSaleByIdWithDates = itemsForSaleById.map((item) => {
     return { ...item, date: item.date.toDate() };
   });
 
   return {
     props: {
-      potionData: data,
-      forSale: JSON.parse(JSON.stringify(potionsForSaleByIdWithDates)),
+      itemData: data,
+      forSale: JSON.parse(JSON.stringify(itemsForSaleByIdWithDates)),
     },
   };
 };
