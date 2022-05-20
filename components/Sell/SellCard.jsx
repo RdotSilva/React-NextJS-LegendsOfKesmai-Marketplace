@@ -45,6 +45,7 @@ const SellCard = ({ itemData }) => {
       name: itemData.name,
       id: itemData.id,
       category: itemData.category,
+      image: itemData.image,
       price,
       quantity,
       date: new Date(),

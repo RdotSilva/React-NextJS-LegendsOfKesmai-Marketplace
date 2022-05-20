@@ -64,7 +64,7 @@ const Table = ({ items, itemName, isMyListingTable }) => {
                 </th>
                 <td className="px-6 py-4">
                   <img
-                    src={`/images/item-${item.id}.png`}
+                    src={`/images/${item.category}/${item.image}`}
                     className="mr-3 h-6 sm:h-9"
                     alt={item.name}
                   ></img>
