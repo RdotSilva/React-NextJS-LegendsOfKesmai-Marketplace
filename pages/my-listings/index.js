@@ -15,25 +15,25 @@ export default MyListingsPage;
  * @returns
  */
 export const getStaticProps = async (context) => {
-  // Collection references for Firestore database
-  const potionsForSale = await fetchDocuments(sellingCollectionRef);
+  const sellingData = await fetchDocuments(sellingCollectionRef);
 
   // Mock user ID for now -> will need to populate this
   const userId = "Test123";
 
-  // Find all sales by potion ID
-  const potionsForSaleByUser = potionsForSale.filter((item) => {
+  const itemsForSaleByUser = sellingData.filter((item) => {
     return item.user === userId;
   });
 
   // Convert Firestore timestamp to JS date
-  const potionsForSaleByUserWithDates = potionsForSaleByUser.map((item) => {
+  const itemsForSaleByUserWithTimestamp = itemsForSaleByUser.map((item) => {
     return { ...item, date: item.date.toDate() };
   });
 
   return {
     props: {
-      forSaleByUser: JSON.parse(JSON.stringify(potionsForSaleByUserWithDates)),
+      forSaleByUser: JSON.parse(
+        JSON.stringify(itemsForSaleByUserWithTimestamp)
+      ),
     },
   };
 };
