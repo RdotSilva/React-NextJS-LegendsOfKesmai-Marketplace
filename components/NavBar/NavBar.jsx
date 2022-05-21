@@ -16,7 +16,7 @@ const NavBar = () => {
                 className="mr-3 h-6 sm:h-9"
                 alt="Reg Dragon"
               ></img>
-              <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+              <span className="self-center text-xl font-semibold whitespace-nowrap bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-50">
                 LOK Marketplace
               </span>
             </a>
