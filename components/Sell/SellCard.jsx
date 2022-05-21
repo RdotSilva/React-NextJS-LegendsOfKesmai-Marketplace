@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form";
 
 const SellCard = ({ itemData }) => {
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(0);
 
   const {
     register,
@@ -39,14 +38,14 @@ const SellCard = ({ itemData }) => {
   /**
    * Send item data to database when form is submitted
    */
-  const submitHandler = async (e) => {
-    e.preventDefault();
+  const submitHandler = async (data) => {
+    console.log("test");
     const item = {
       name: itemData.name,
       id: itemData.id,
       category: itemData.category,
       image: itemData.image,
-      price,
+      price: data.price,
       quantity,
       date: new Date(),
       user: "Test123", // TODO: Get user info and populate this
@@ -74,13 +73,6 @@ const SellCard = ({ itemData }) => {
     } else {
       console.log(errors.askingPrice);
     }
-  };
-
-  /**
-   * Set price state when input changes
-   */
-  const onChangePrice = (e) => {
-    setPrice(e.target.value);
   };
 
   const counter = (
@@ -140,25 +132,17 @@ const SellCard = ({ itemData }) => {
               Asking Price
             </label>
             <input
-              type="number"
-              name="price"
-              id="price"
-              placeholder="20000"
-              onChange={onChangePrice}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              required
-              {...register("askingPrice", { required: true, min: 1 })}
+              type="number"
+              placeholder="0"
+              {...register("price", { required: true, min: 1 })}
             />
-            {errors.askingPrice && (
-              <div className="mb-3 text-normal text-red-500 ">
-                {errors.askingPrice.message}
-              </div>
-            )}
           </div>
+
           <button
             type="submit"
             className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-one dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            onClick={(e) => submitHandler(e)}
+            onClick={handleSubmit(submitHandler)}
           >
             Sell
           </button>
