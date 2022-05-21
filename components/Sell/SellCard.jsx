@@ -141,7 +141,11 @@ const SellCard = ({ itemData }) => {
 
           <button
             type="submit"
-            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-one dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="group relative w-full flex justify-center
+                py-2 px-4 border border-transparent text-sm font-medium
+                rounded-md text-white bg-indigo-600 hover:bg-indigo-700
+                focus:outline-none focus:ring-2 focus:ring-offset-2
+                focus:ring-indigo-500"
             onClick={handleSubmit(submitHandler)}
           >
             Sell
