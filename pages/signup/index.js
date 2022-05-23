@@ -22,7 +22,7 @@ const SignUpPage = () => {
       createUser(email, passwordOne)
         .then((authUser) => {
           console.log("Success. The user is created in Firebase");
-          router.push("/logged_in");
+          router.push("/my-listings");
         })
         .catch((error) => {
           // An error occurred. Set error message to be displayed to user
